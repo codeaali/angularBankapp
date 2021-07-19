@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: rgb(102, 80, 52);
+    padding: 20px;
+}
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.left-pane{
+    /* background-color: teal; */
+    height: auto;
+    width: 50%;
+    background-image: url(./card.jpg);
+    background-size: cover;
+    background-position:center center;
+}
+.right-pane{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 50%;
+    padding: 40px 40px;
+}
+.right-pane h1{
+    font-family: serif;
+    font-weight: 500;
+}
+.right-pane input[type="text"]
+{
+    height: 40px;
+    width: 60%;
+    margin-bottom: 8px;
+    border: 0;
+    border-bottom: 1px solid black;
+}
+input[type="submit"]{
+  
+    
+    padding: 8px 10px;
+    border: 1px solid rgba(72, 185, 6, 0.685);
+    margin-top: 12px;
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    margin-right: 10px;
+
+}
+[type="submit"].lgn{
+    background-color: #0b648d;
+    border: 1px solid rgba(5, 59, 131, 0.685);
+}
+
+.result-container{
+    padding: 10px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    /* display: none; */
+}
