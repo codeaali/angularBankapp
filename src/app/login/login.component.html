@@ -6,11 +6,14 @@
         <h1>user login.</h1>
         <h3>{{aim}}</h3>
       
-        <input type="text" name="" id="username" (change)="usernameChange($event)" [value] = "entermsg" placeholder="username">
-    <input type="text" name="" id="password" (change)="pswdChange($event)" placeholder="password">
+        <!-- <input type="text" name="" id="username" (change)="usernameChange($event)" [value] = "entermsg" placeholder="username">
+    <input type="text" name="" id="password" (change)="pswdChange($event)" placeholder="password"> -->
+
+    <input type="text" name="" id="username" #acno [value] = "entermsg" placeholder="username">
+    <input type="text" name="" id="password" #pswd placeholder="password">
     <!-- <input type="text" id="bal" placeholder="balance"> -->
     <br>
-    <input type="submit" class="bttn" (click)="signin()" value="sign in">
+    <input type="submit" class="bttn" (click)="signin(acno,pswd)" value="sign in">
     <input type="submit" class="bttn" onclick="window.location.href='index.html'" value="home">
     <!-- <input type="submit" class="bttn" onclick="listAllUsers()" value="list users"> -->
    

@@ -22,24 +22,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  usernameChange(event:any){
-    this.acno = event.target.value
+  // usernameChange(event:any){
+  //   this.acno = event.target.value
     
     
     
-  }
-  pswdChange(event:any)
-  {
-    this.pwd = event.target.value
-  }
+  // }
+  // pswdChange(event:any)
+  // {
+  //   this.pwd = event.target.value
+  // }
 
-  signin()
+
+  signin(a:any,p:any)
   {
-    let username = this.acno
-    let password = this.pwd
+     var acno = a.value
+    var pswd = p.value
     let db = this.user
-    if(username in db){
-      if(password==db[username]["password"])
+    if(acno in db){
+      if(pswd==db[acno]["password"])
       {
         alert("login success")
       }else{
@@ -49,5 +50,22 @@ export class LoginComponent implements OnInit {
       alert("user not found")
     }
   }
+
+  // signin()
+  // {
+  //   let username = this.acno
+  //   let password = this.pwd
+  //   let db = this.user
+  //   if(username in db){
+  //     if(password==db[username]["password"])
+  //     {
+  //       alert("login success")
+  //     }else{
+  //       alert("wrong password")
+  //     }
+  //   }else{
+  //     alert("user not found")
+  //   }
+  // }
 
 }
