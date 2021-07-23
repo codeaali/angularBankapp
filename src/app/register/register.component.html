@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <h4 class="text-center">Bank application registration
+                   <!-- <h5 class="text-center">{{aim}}</h5> -->
+                </h4>
+               
+               
+                <br>
+
+                <form (ngSubmit)="register()" >
+                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="uname" placeholder="user name">
+                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "acno" #accno [value]="acno"  class="text" placeholder="acc number"> 
+                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "pswd"  class="text" placeholder="password"> 
+                <input type="submit" value="register" class="buttonbutefct btn btn-primary"> <br>
+                </form>
+               
+               
+                <!-- <input type="button" value="create New Account" class="button button1 butefct">-->
+                
+                <br> <br>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>

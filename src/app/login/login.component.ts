@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +11,12 @@ export class LoginComponent implements OnInit {
   aim = "your banking partner"
   //prop binding
   entermsg = "enter your username"
-  acno = ""
+  acc =  "username"
   pwd = ""
-  //creating db
-  user:any = {
-    1000:{acno:1000,uname:"afzal",password:"userone",balance:6000},
-    1001:{acno:1001,uname:"ajma",password:"usertwo",balance:65000},
-    1002:{acno:1002,uname:"ali",password:"userthree",balance:1000}
-  }
+  
+ 
 
-  constructor() { }
+  constructor(private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
   }
@@ -28,36 +26,19 @@ export class LoginComponent implements OnInit {
     
     
   // }
-  // pswdChange(event:any)
-  // {
-  //   this.pwd = event.target.value
-  // }
-
-
-  signin(a:any,p:any)
+  pswdChange(event:any)
   {
-     var acno = a.value
-    var pswd = p.value
-    let db = this.user
-    if(acno in db){
-      if(pswd==db[acno]["password"])
-      {
-        alert("login success")
-      }else{
-        alert("wrong password")
-      }
-    }else{
-      alert("user not found")
-    }
+    this.pwd = event.target.value
   }
 
-  // signin()
+
+  // signin(a:any,p:any)
   // {
-  //   let username = this.acno
-  //   let password = this.pwd
+  //    var acno = a.value
+  //   var pswd = p.value
   //   let db = this.user
-  //   if(username in db){
-  //     if(password==db[username]["password"])
+  //   if(acno in db){
+  //     if(pswd==db[acno]["password"])
   //     {
   //       alert("login success")
   //     }else{
@@ -68,4 +49,50 @@ export class LoginComponent implements OnInit {
   //   }
   // }
 
+  // signin()
+  // {
+  // //   let username = this.acno
+  // //   let password = this.pwd
+  // //   let db = this.user
+  // //   if(username in db){
+  // //     if(password==db[username]["password"])
+  // //     {
+  // //       alert("login success")
+  // //     }else{
+  // //       alert("wrong password")
+  // //     }
+  // //   }else{
+  // //     alert("user not found")
+  // //   }
+  // }
+
+
+  accChange(event:any)
+  {
+    this.acc=event.target.value
+    
+  }
+  // pswdChange(event:any)
+  // {
+  //   this.pwd=event.target.value
+  // }
+
+
+  login()
+  {
+    var acno = this.acc
+    var pswd = this.pwd
+    var res = this.ds.login(acno,pswd)
+    if(res)
+    {
+      alert("login success")
+      this.router.navigateByUrl("dashboard")
+    } 
+    
+   
+  }
+
+
+
+//class end
 }

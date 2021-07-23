@@ -1,26 +1,55 @@
-<div class="container">
+<!-- <div class="container">
     <div class="left-pane">
 
     </div>
     <div class="right-pane">
         <h1>user login.</h1>
-        <h3>{{aim}}</h3>
+        <h3>{{aim}}</h3> -->
       
         <!-- <input type="text" name="" id="username" (change)="usernameChange($event)" [value] = "entermsg" placeholder="username">
     <input type="text" name="" id="password" (change)="pswdChange($event)" placeholder="password"> -->
 
-    <input type="text" name="" id="username" #acno [value] = "entermsg" placeholder="username">
-    <input type="text" name="" id="password" #pswd placeholder="password">
+    <!-- <input type="text" name="" id="username" [(ngModel)]="acno"  placeholder="username">
+    <input type="text" name="" id="password" [(ngModel)]="pwd"  placeholder="password"> -->
     <!-- <input type="text" id="bal" placeholder="balance"> -->
-    <br>
-    <input type="submit" class="bttn" (click)="signin(acno,pswd)" value="sign in">
-    <input type="submit" class="bttn" onclick="window.location.href='index.html'" value="home">
+    <!-- <br>
+    <input type="submit" class="bttn" (click)="signin()" value="sign in">
+    <a routerLink="register">Sign Up</a> -->
     <!-- <input type="submit" class="bttn" onclick="listAllUsers()" value="list users"> -->
    
     <!-- <button class="bttn" onclick="createUser()"></button>
     <button class="bttn" onclick="listAllUsers()">list users</button>
     <button class="bttn" onclick="bank.insideBank()">BankCheck</button> -->
 
-    </div>
+    <!-- </div>
     
+ </div> -->
+
+ <div class="container">
+     <div class="row">
+         <div class="col-4"></div>
+         <div class="col-4">
+             <div class="main">
+                 <h4 class="text-center">Bank application Login
+                    <!-- <h5 class="text-center">{{aim}}</h5> -->
+                 </h4>
+                
+                
+                 <br>
+                 <form (ngSubmit)="login()">
+                    <input type="text" name="acc" id="accnotext" [(ngModel)] = "acc" #accno [value]="acc" (change)="accChange($event)" class="text" placeholder="acc number"> 
+                    
+                    <input type="password" name="pwd" id="pwdtext" [(ngModel)] = "pwd" #pswrd (change)="pswdChange($event)" class="text" placeholder="password"> 
+                    <input type="submit" value="Log In" class="btn btn-primary buttonbutefct" > 
+                 </form>
+                <br>
+                 <a href="#" class="textfp">Forgotten password?</a>
+                 <hr width="100%">
+                 <!-- <input type="button" value="create New Account" class="button button1 butefct">-->
+                 <a class="btn btn-primary buttonbutefct" routerLink="register">Sign Up</a> 
+                 <br> <br>
+             </div>
+         </div>
+         <div class="col-4"></div>
+     </div>
  </div>
