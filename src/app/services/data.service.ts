@@ -69,6 +69,21 @@ export class DataService {
 
   }
 
+  // deposit
 
+    deposit(acno:any,pswd:any,amt:any)
+    {
+      var amount = parseInt(amt)
+      let db = this.user
+      if(acno in db)
+      {
+        if(pswd == db[acno]["password"])
+        {
+          db[acno]["balance"]+=amount
+          return db[acno]["balance"]
+        }
+      }
+    }
 
+  //deposit ends
 }

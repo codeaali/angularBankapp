@@ -1,1 +1,57 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <h4 class="text-center">Deposit Form
+                   <!-- <h5 class="text-center">{{aim}}</h5> -->
+                </h4>
+               
+               
+                <br>
+
+                <form (ngSubmit)="deposit()" >
+                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acno" placeholder="acc number">
+                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswd" #accno [value]="acno"  class="text" placeholder="password"> 
+                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amt"  class="text" placeholder="amount"> 
+                <input type="submit" value="deposit" class="buttonbutefct btn btn-primary"> <br>
+                </form>
+               
+               
+                <!-- <input type="button" value="create New Account" class="button button1 butefct">-->
+                
+                <br> <br>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <h4 class="text-center">Withdraw From
+                   <!-- <h5 class="text-center">{{aim}}</h5> -->
+                </h4>
+               
+               
+                <br>
+
+                <form (ngSubmit)="withdraw()" >
+                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acnoW" placeholder="user name">
+                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswdW" #accno [value]="acno"  class="text" placeholder="acc number"> 
+                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amtW"  class="text" placeholder="password"> 
+                <input type="submit" value="withdraw" class="buttonbutefct btn btn-primary"> <br>
+                </form>
+               
+               
+                <!-- <input type="button" value="create New Account" class="button button1 butefct">-->
+                
+                <br> <br>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
