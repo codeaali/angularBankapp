@@ -86,4 +86,28 @@ export class DataService {
     }
 
   //deposit ends
+  //withdraw begin
+
+  withdraw(acno:any,pswd:any,amt:any)
+  {
+
+   var amount = parseInt(amt)
+      let db = this.user
+      if(acno in db)
+      {
+        if(pswd == db[acno]["password"])
+        {
+         if(db[acno]["balance"] >amount)
+         {
+          db[acno]["balance"]-=amount
+          return db[acno]["balance"]
+         } else {
+           alert("insufficient balance")
+           return false
+         }
+        }
+      }
+  }
+
+  //withdraw ends
 }

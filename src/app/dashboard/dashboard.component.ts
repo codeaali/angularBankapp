@@ -34,7 +34,15 @@ export class DashboardComponent implements OnInit {
   }
   withdraw()
   {
+    var acno = this.acnoW
+    var pswd = this.pswdW
+    var amt = this.amtW
 
+    var res = this.ds.withdraw(acno,pswd,amt)
+    if(res)
+    {
+      alert("Amount"+amt+"Debited. New Balance is "+res)
+    }
   }
 
 }

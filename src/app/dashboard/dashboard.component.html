@@ -40,9 +40,9 @@
                 <br>
 
                 <form (ngSubmit)="withdraw()" >
-                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acnoW" placeholder="user name">
-                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswdW" #accno [value]="acno"  class="text" placeholder="acc number"> 
-                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amtW"  class="text" placeholder="password"> 
+                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acnoW" placeholder="acc number">
+                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswdW" #accno [value]="acno"  class="text" placeholder="pswrd"> 
+                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amtW"  class="text" placeholder="amount"> 
                 <input type="submit" value="withdraw" class="buttonbutefct btn btn-primary"> <br>
                 </form>
                
