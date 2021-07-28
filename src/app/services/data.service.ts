@@ -6,10 +6,11 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   currentUser = ""
+  currentAcc = ""
   user:any= {
-    1000:{acno:1000,uname:"afzal",password:"userone",balance:6000},
-    1001:{acno:1001,uname:"ajma",password:"usertwo",balance:65000},
-    1002:{acno:1002,uname:"ali",password:"userthree",balance:1000}
+    1000:{acno:1000,uname:"afzal",password:"userone",balance:6000,transaction:[]},
+    1001:{acno:1001,uname:"ajmal",password:"usertwo",balance:65000,transaction:[]},
+    1002:{acno:1002,uname:"ali",password:"userthree",balance:1000,transaction:[]}
   }
 
   constructor() { 
@@ -23,6 +24,10 @@ export class DataService {
     {
       localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
     }
+    if(this.currentAcc)
+    {
+      localStorage.setItem("currentAcc",JSON.stringify(this.currentAcc))
+    }
   }
 
   getDetails()
@@ -33,8 +38,17 @@ export class DataService {
       }
     if(localStorage.getItem("currentUser"))
     {
-      this.currentUser = JSON.parse(localStorage.getItem("curentUser") || '')
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser") || '')
     }
+    if(localStorage.getItem("currentAcc"))
+    {
+      this.currentAcc = JSON.parse(localStorage.getItem("currentAcc") || '')
+    }
+  }
+
+  getTransaction()
+  {
+    return this.user[this.currentAcc].transaction
   }
 
   register(acno:any,uname:any,password:any)
@@ -51,7 +65,8 @@ export class DataService {
         acno,
         uname,
         password,
-        balance:0
+        balance:0,
+        transaction:[]
         
       }
       // console.log("inserted");
@@ -79,6 +94,7 @@ export class DataService {
       if(pass == accDetails[acno]["password"])
       {
         this.currentUser = accDetails[acno]["uname"]
+        this.currentAcc = acno
         this.saveDetails()
         return true
       }
@@ -105,6 +121,10 @@ export class DataService {
         if(pswd == db[acno]["password"])
         {
           db[acno]["balance"]+=amount
+          db[acno].transaction.push({
+            amount:amount,
+            type:"CREDIT"
+          })
           this.saveDetails()
           return db[acno]["balance"]
         }
@@ -126,6 +146,10 @@ export class DataService {
          if(db[acno]["balance"] >amount)
          {
           db[acno]["balance"]-=amount
+          db[acno].transaction.push({
+            amount:amount,
+            type:"DEBIT"
+          })
           this.saveDetails()
           return db[acno]["balance"]
          } else {

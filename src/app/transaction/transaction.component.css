@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+    color: rgb(14, 20, 14);
+    margin: 50px;
+}
+table {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+table tr td,table th{
+    border: 1px solid black;
+    padding: 4px;
+    text-align: center;
+}
+
