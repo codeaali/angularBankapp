@@ -1,4 +1,5 @@
 <div class="container">
+    <h1>Welcome {{currentUser}}</h1>
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
@@ -10,10 +11,13 @@
                
                 <br>
 
-                <form (ngSubmit)="deposit()" >
-                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acno" placeholder="acc number">
-                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswd" #accno [value]="acno"  class="text" placeholder="password"> 
-                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amt"  class="text" placeholder="amount"> 
+                <form [formGroup]="depositForm" (ngSubmit)="deposit()" >
+                <input type="text" name="username" class="text" id="uname" formControlName="acno" placeholder="acc number">
+                <div *ngIf = "(this.depositForm.get('acno')?.touched || this.depositForm.get('acno')?.dirty) && this.depositForm.get('acno')?.errors" class="errors">acno is required and only Numbers allowed</div>
+                <input type="text" name="accnum" id="accnotext" formControlName = "pswd" #accno [value]="acno"  class="text" placeholder="password"> 
+                <div *ngIf = "(this.depositForm.get('pswd')?.touched || this.depositForm.get('pswd')?.dirty) && this.depositForm.get('pswd')?.errors" class="errors">pswd is required </div>
+                <input type="password" name="pass" id="pwdtext" formControlName = "amt"  class="text" placeholder="amount"> 
+                <div *ngIf = "(this.depositForm.get('amt')?.touched || this.depositForm.get('amt')?.dirty) && this.depositForm.get('amt')?.errors" class="errors">amount is required</div>
                 <input type="submit" value="deposit" class="buttonbutefct btn btn-primary"> <br>
                 </form>
                
@@ -39,10 +43,13 @@
                
                 <br>
 
-                <form (ngSubmit)="withdraw()" >
-                    <input type="text" name="username" class="text" id="uname" [(ngModel)]="acnoW" placeholder="acc number">
-                <input type="text" name="accnum" id="accnotext" [(ngModel)] = "pswdW" #accno [value]="acno"  class="text" placeholder="pswrd"> 
-                <input type="password" name="pass" id="pwdtext" [(ngModel)] = "amtW"  class="text" placeholder="amount"> 
+                <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()" >
+                <input type="text" name="username" class="text" id="uname" formControlName="acnoW" placeholder="acc number">
+                <div *ngIf = "(this.withdrawForm.get('acnoW')?.touched || this.withdrawForm.get('acnoW')?.dirty) && this.withdrawForm.get('acnoW')?.errors" class="errors">acno is required and only Numbers allowed</div>
+                <input type="text" name="accnum" id="accnotext" formControlName = "pswdW" #accno [value]="acno"  class="text" placeholder="pswrd"> 
+                <div *ngIf = "(this.withdrawForm.get('pswdW')?.touched || this.withdrawForm.get('pswdW')?.dirty) && this.withdrawForm.get('pswdW')?.errors" class="errors">pswd is required </div>
+                <input type="password" name="pass" id="pwdtext" formControlName = "amtW"  class="text" placeholder="amount"> 
+                <div *ngIf = "(this.withdrawForm.get('amtW')?.touched || this.withdrawForm.get('amtW')?.dirty) && this.withdrawForm.get('amtW')?.errors" class="errors">amount is required</div>
                 <input type="submit" value="withdraw" class="buttonbutefct btn btn-primary"> <br>
                 </form>
                

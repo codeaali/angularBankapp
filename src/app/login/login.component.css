@@ -117,3 +117,6 @@ input[type="button"].button1:hover{
 .buttonbutefct{
     width: 100%;
 }
+.errors{
+    color:red;
+}

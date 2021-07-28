@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -11,12 +12,16 @@ export class LoginComponent implements OnInit {
   aim = "your banking partner"
   //prop binding
   entermsg = "enter your username"
-  acc =  "username"
+  acc =  ""
   pwd = ""
-  
+  //creating form builder
+  loginForm = this.fb.group({
+    acno:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]]
+  })
  
 
-  constructor(private router:Router,private ds:DataService) { }
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -26,10 +31,10 @@ export class LoginComponent implements OnInit {
     
     
   // }
-  pswdChange(event:any)
-  {
-    this.pwd = event.target.value
-  }
+  // pswdChange(event:any)
+  // {
+  //   this.pwd = event.target.value
+  // }
 
 
   // signin(a:any,p:any)
@@ -67,11 +72,11 @@ export class LoginComponent implements OnInit {
   // }
 
 
-  accChange(event:any)
-  {
-    this.acc=event.target.value
+  // accChange(event:any)
+  // {
+  //   this.acc=event.target.value
     
-  }
+  // }
   // pswdChange(event:any)
   // {
   //   this.pwd=event.target.value
@@ -80,15 +85,21 @@ export class LoginComponent implements OnInit {
 
   login()
   {
-    var acno = this.acc
-    var pswd = this.pwd
+    
+    if(this.loginForm.valid)
+    {
+      var acno = this.loginForm.value.acno
+    var pswd = this.loginForm.value.pswd
     var res = this.ds.login(acno,pswd)
     if(res)
     {
       alert("login success")
       this.router.navigateByUrl("dashboard")
     } 
-    
+    } else
+    {
+      alert("invalid form")
+    }
    
   }
 
