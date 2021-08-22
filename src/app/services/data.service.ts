@@ -78,7 +78,7 @@ export class DataService {
    
   }
 
-  login(acno:any,pass:any)
+  login(acno:any,pswd:any)
   {
     let accDetails = this.user
     console.log("accDetail");
@@ -91,7 +91,7 @@ export class DataService {
     
     if(acno in accDetails)
     {
-      if(pass == accDetails[acno]["password"])
+      if(pswd == accDetails[acno]["password"])
       {
         this.currentUser = accDetails[acno]["uname"]
         this.currentAcc = acno
